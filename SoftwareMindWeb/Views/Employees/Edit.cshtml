@@ -1,0 +1,107 @@
+﻿@model Domain.ViewModels.EmployeeDetailsVM
+<h1>Employee Details</h1>
+<hr />
+<form method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <img id="detailsAvatar_@Model.EmployeeId" style="width:350px;height:350px; object-fit:cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMk5lXjt8WO3iCoNXzDDYEOv4c_v1DnR0isw&s)">
+                </div>
+            </div>
+            <div>
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            </div>
+        </div>
+
+        <input type="hidden" asp-for="EmployeeId" />
+        <div class="col-md-8">
+            <div class="p-3 border">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-8 pt-4">
+                    <div class="form-group row py-2">
+                        <div class="col-8">
+                            <p>
+                                <b>Employee Name</b><br />
+                                <span>@Model.FullName</span>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p>
+                                <b>Hire Date</b> <br />
+                                <span>@Model.HireDate</span> <br />
+                                <span>@Model.TimeSinceJoined</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <div class="col-8">
+                            <p>
+                                <span>Employee ID:</span>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p>
+                                <span>@Model.EmployeeId</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <div class="col-8">
+                            <p>
+                                <span>Department:</span>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p>
+                                <span>@Model.DepartmentName</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <div class="col-8">
+                            <p>
+                                <span>Telephone:</span>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p>
+                                <span>@Model.Phone</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <div class="col-8">
+                            <p>
+                                <span>Address:</span>
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <p>
+                                <span>@Model.Address</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <div class="col-8">
+                            <p>
+                                <label for="departmentPicker"><b>Update Department</b></label><br />
+                                @Html.DropDownListFor(m => Model.DepartmentId, new SelectList(ViewData["CompanyDepartments"] as IEnumerable<Domain.Entities.Department>, "DepartmentId", "Name"))
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success form-control">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
