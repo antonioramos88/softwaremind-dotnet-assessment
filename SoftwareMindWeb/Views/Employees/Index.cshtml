@@ -13,37 +13,35 @@
 </div>
 @foreach (var item in Model)
 {
-    <div style="display: flex;flex-flow: row wrap; justify-content:center">
-        <div class="row border py-5">
-            <div class="col py-2">
-                <div class="form-group">
-                    <img id="listAvatar_@item.EmployeeId" style="width:80%;height:90%; object-fit:contain" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMk5lXjt8WO3iCoNXzDDYEOv4c_v1DnR0isw&s)">
-                </div>
+    <div class="row border py-5" style="display: flex;flex-flow: row wrap; justify-content:center">
+        <div class="col py-2">
+            <div class="form-group">
+                <img id="listAvatar_@item.EmployeeId" style="width:80%;height:90%; object-fit:contain" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMk5lXjt8WO3iCoNXzDDYEOv4c_v1DnR0isw&s)">
             </div>
-            <div class="col py-2">
-                <div class="form-group row">
-                    <div class="col-5">
-                        <p>
-                            <span>@item.FullName</span>
-                            <span style="color:#808080">(@item.DepartmentName)</span>
-                        </p>
-                    </div>
-                    <div class="col-7">
-                        <div class="row">
-                            <div>
-                                <a class="btn btn-primary" asp-action="Edit" asp-route-Id="@item.EmployeeId">View Details</a>
-                                <a class="btn btn-close" asp-action="Delete" asp-route-Id="@item.EmployeeId"></a>
-                            </div>                            
+        </div>
+        <div class="col py-2">
+            <div class="form-group row">
+                <div class="col-5">
+                    <p>
+                        <span>@item.FullName</span>
+                        <span style="color:#808080">(@item.DepartmentName)</span>
+                    </p>
+                </div>
+                <div class="col-7">
+                    <div class="row">
+                        <div>
+                            <a class="btn btn-primary" asp-action="Edit" asp-route-Id="@item.EmployeeId">View Details</a>
+                            <a class="btn btn-close" asp-action="Delete" asp-route-Id="@item.EmployeeId"></a>
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <p>Hire Date</p>
-                    <p>
-                        <span>@item.HireDate</span>
-                        <span style="color:#808080">(@item.TimeSinceJoined)</span>
-                    </p>
-                </div>
+            </div>
+            <div class="form-group row">
+                <p>Hire Date</p>
+                <p>
+                    <span>@item.HireDate</span>
+                    <span style="color:#808080">(@item.TimeSinceJoined)</span>
+                </p>
             </div>
         </div>
     </div>

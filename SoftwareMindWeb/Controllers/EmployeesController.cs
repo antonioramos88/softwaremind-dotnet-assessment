@@ -3,12 +3,12 @@ using Domain.Entities;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SoftwareMindWeb.Authentication;
 using SoftwareMindWeb.Utility;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SoftwareMindWeb.Controllers
 {
-    [WebTokenAuthentication]
+    [Authorize(Policy = "WebAuthentication")]
     public class EmployeesController : Controller
     {
         private readonly SoftwareMindContext Context;
@@ -58,7 +58,7 @@ namespace SoftwareMindWeb.Controllers
                 };
                 Context.Employees.Add(newEmployee);
                 Context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return Ok();
             }
             catch (Exception ex)
             {

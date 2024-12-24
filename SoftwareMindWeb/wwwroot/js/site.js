@@ -4,16 +4,18 @@
 // Write your JavaScript code.
 $(document).ready(function () {
     $("#addEmployeeButton").on("click", function () {
-        debugger;
         let newEmployee = {
             firstName: $("#firstName").val(),
             lastName: $("#lastName").val(),
             address: $("#address").val(),
             phoneNumber: $("#phone").val()
         };
-        $.post('http://localhost:5203/Employees/CreateEmployee', newEmployee, function () {
+        $.post('http://localhost:5203/Employees/CreateEmployee', newEmployee, function (data, textStatus, jqXHR) {
             $('#newEmployeeModal').modal('hide');
             document.location.reload();
+        })
+        .fail(function () {
+            window.location.href = 'http://localhost:5203/Home/Error';
         });
     });
 });
